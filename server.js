@@ -1,5 +1,4 @@
 //setting variables
-const { response } = require('express')
 const express = require('express')
 const app = express()
 const MongoClient = require('mongodb').MongoClient
@@ -11,7 +10,7 @@ let db,
     dbName = 'epl-info-api'
 
 //connect to MongoDb
-MongoClient.connect(dbConnectionStr)
+MongoClient.connect(dbConnectionStr, {useUnifiedTopology: true})
     .then(client => {
         console.log(`Connected to ${dbName} Database`)
         db = client.db(dbName)
